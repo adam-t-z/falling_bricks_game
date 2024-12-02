@@ -1,6 +1,6 @@
-# 🎮 Turtle Brick Game 🐢🎲
+# 🎮 Falling Brick Game 🐢🎲
 
-Welcome to the **Turtle Brick Game**! 🧱 This is a fun and interactive game where you control a paddle to catch falling bricks, score points, and avoid losing the game when a dangerous brick hits your paddle.
+Welcome to the **Falling Brick Game**! 🧱 This is a fun and interactive game where you control a paddle to catch falling bricks, score points, and avoid losing the game when a dangerous brick hits your paddle.
 
 
 ## 🎮 Game Setup
