@@ -40,6 +40,9 @@ The game will start immediately once you run the script. The game ends when a wh
 ## 📸 Screenshots
 Here’s a screenshot of the game in action:
 
+![falling_bricks](https://github.com/user-attachments/assets/7ba4ddad-1dee-4a30-beb8-6cc0d3a2ed28)
+
+
 ## 📜 Credits
 - **Game Developed By**: You (Awesome game creator!) 🎉
 - **Turtle Graphics**: A fun Python library for graphics 🐢
