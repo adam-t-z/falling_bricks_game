@@ -6,14 +6,14 @@ import time
 
 # Set up the screen for the game
 screen = Screen()
-screen.setup(width=1000, height=800)  # Set the size of the window
-screen.bgcolor("black")  # Set the background color of the screen to black
+screen.setup(width=1000, height=800) 
+screen.bgcolor("black")  
 screen.tracer(0)  # Disable automatic screen updates to allow manual control
 
 # Create game objects: paddle, brick, and score board
-paddle = Paddle()  # The player's paddle
+paddle = Paddle() 
 brick = Brick()  # The falling brick
-score = ScoreBoard()  # The score board to keep track of the player's score
+score = ScoreBoard() 
 
 # Set up keyboard controls for moving the paddle
 screen.listen()  # Listen for user input
@@ -24,18 +24,18 @@ screen.onkey(paddle.move_left, "Left")  # Move the paddle left when the left arr
 sleep_time = 0.1  # Time delay for each game frame (controls game speed)
 game_on = True  # Flag to control the game loop
 
-# Main game loop
+
 while game_on:
     time.sleep(sleep_time)  # Pause for a short time between frames to control speed
     screen.update()  # Update the screen manually
 
-    brick.go_down()  # Move the brick down the screen
+    brick.go_down() 
 
     # Check if the brick is close enough to the paddle and if it's in the collision zone
     if paddle.distance(brick) <= 70 and brick.ycor() <= -330:
         # If the brick is a "turtle" and white, the game ends
         if brick.shape() == "turtle" and brick.color()[0] == "white":
-            game_on = False  # End the game
+            game_on = False  
             screen.bgcolor("red")  # Change the background color to red to indicate game over
             score.game_over()  # Display the game over message
 
