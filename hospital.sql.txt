@@ -1,0 +1,77 @@
+-- =========================================
+-- DATABASE
+-- =========================================
+CREATE DATABASE HospitalManagementSystem;
+USE HospitalManagementSystem;
+
+-- =========================================
+-- DOCTOR
+-- =========================================
+CREATE TABLE Doctor_0241801 (
+    doctor_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    middle_name VARCHAR(50),
+    last_name VARCHAR(50)
+);
+
+-- Multivalued Attribute: Specialization
+CREATE TABLE Doctor_Specialization_0241801 (
+    doctor_id INT,
+    specialization VARCHAR(100),
+    PRIMARY KEY (doctor_id, specialization),
+    FOREIGN KEY (doctor_id) REFERENCES Doctor_0241801(doctor_id)
+);
+
+-- Multivalued Attribute: Qualification
+CREATE TABLE Doctor_Qualification_0241801 (
+    doctor_id INT,
+    qualification VARCHAR(100),
+    PRIMARY KEY (doctor_id, qualification),
+    FOREIGN KEY (doctor_id) REFERENCES Doctor_0241801(doctor_id)
+);
+
+-- =========================================
+-- PATIENT
+-- =========================================
+CREATE TABLE Patient_0241801 (
+    patient_id INT PRIMARY KEY,
+    dob DATE,
+    locality VARCHAR(100),
+    town_city VARCHAR(100),
+    doctor_id INT,
+    FOREIGN KEY (doctor_id) REFERENCES Doctor_0241801(doctor_id)
+);
+
+-- NOTE:
+-- Age is a derived attribute (dashed oval),
+-- so it is NOT stored in the table.
+
+-- =========================================
+-- MEDICINE
+-- =========================================
+CREATE TABLE Medicine_0241801 (
+    code INT PRIMARY KEY,
+    price DECIMAL(10,2),
+    quantity INT
+);
+
+-- =========================================
+-- BILL (M:N relationship between Patient and Medicine)
+-- =========================================
+CREATE TABLE Bill_0241801 (
+    patient_id INT,
+    medicine_code INT,
+    bill_date DATE,
+    PRIMARY KEY (patient_id, medicine_code),
+    FOREIGN KEY (patient_id) REFERENCES Patient_0241801(patient_id),
+    FOREIGN KEY (medicine_code) REFERENCES Medicine_0241801(code)
+);
+
+-- =========================================
+-- VIEW FOR DERIVED ATTRIBUTE: AGE
+-- =========================================
+CREATE VIEW Patient_Age AS
+SELECT
+    patient_id,
+    TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age
+FROM Patient_0241801;
